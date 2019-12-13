@@ -9,17 +9,11 @@ public class Place  implements Comparable<Place>/* TODO make Place objects Compa
     private String name;// name of the place to visit
     private String reason;//reason for visiting
     private Date created;//date created
+    private int primaryID;
 
     Place(String name){
         this.name = name;
     }
-    Place(String name, String reason, Date created){
-        this.name = name;
-        this.reason = reason;
-        this.created =  created;
-    }
-
-
     // The constructor can create and set the Date created.
     public Place(String name, String reason){
         this.name = name;
@@ -27,7 +21,6 @@ public class Place  implements Comparable<Place>/* TODO make Place objects Compa
         this.created = new Date();
 
     }
-
 
     // create get and set methods
     public String getName() {
