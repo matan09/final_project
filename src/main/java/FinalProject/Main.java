@@ -13,11 +13,7 @@ public class Main {
     VocationGui gui;
 
     public static void main(String[] args) {
-        // this is my original code
-//        VocationDB db = new VocationDB();
-//        List<String> wishListPlaces = storage.readListFromFile(wishListFile);
-//
-//        VocationGui gui = new VocationGui();
+
         Main main = new Main();
         main.creation();
 
