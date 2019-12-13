@@ -1,0 +1,2 @@
+Place to visit: beijing. Reason: great wall. Date created: Mon Dec 09 20:03:03 CST 2019
+Place to visit: minneapolis. Reason: lakes. Date created: Mon Dec 09 20:03:11 CST 2019
