@@ -22,21 +22,23 @@ public class VocationGui extends JFrame {
     private DefaultListModel<Place> placeInfoListModel;
 
 
+// initialize object
+    Main main;
 
-VocationDB database;
 
-public VocationGui(VocationDB database) {
-        this.database = database;
+public VocationGui(Main main) {
+    this.main = main;
+
         setContentPane(mainPanel);
         setPreferredSize(new Dimension(500, 500));
         pack();
         setVisible(true);
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        // add image icon to deleteBtton
+        DeleteButton.setIcon(new ImageIcon("C:\\Users\\abdala\\Desktop\\d.png"));
         // associate modelList to jList
         placeInfoListModel = new DefaultListModel<>();
         wishList.setModel(placeInfoListModel);
-        // set font style
-        //titleText.setBackground(Color.magenta);
 
         addActionListeners();
 
@@ -53,22 +55,31 @@ public void addActionListeners(){
             // validate user input
             if(name.isEmpty() || reason.isEmpty()){
                 errormsg("enter a name and reason");
+                return;
             }
 
             Place pl = new Place(name, reason);
-           placeInfoListModel.addElement(pl);
+            String outcome = main.addPlace(pl);
 
-           // delete button listener
-     DeleteButton.addActionListener(new ActionListener() {
-         @Override
-         public void actionPerformed(ActionEvent e) {
-             Place place = wishList.getSelectedValue();
-             placeInfoListModel.removeElement(place);
+            if(outcome.equals(VocationDB.noDupicate)){
+                List<Place> alldata = main.getPlaceData();
+                updatewishList(alldata);
+            }
 
-         }
-     });
+        }
+    });
 
-
+    DeleteButton.addActionListener(new ActionListener() {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            Place placeinfo = wishList.getSelectedValue();
+            if(placeinfo == null){
+                errormsg("select a place to delete");
+            }else{
+                main.deleteplace(placeinfo);
+                List<Place> placedata = main.getPlaceData();
+                updatewishList(placedata);
+            }
 
         }
     });

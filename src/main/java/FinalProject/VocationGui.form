@@ -19,6 +19,7 @@
             <constraints/>
             <properties>
               <model/>
+              <selectionForeground color="-5000269"/>
             </properties>
           </component>
         </children>
