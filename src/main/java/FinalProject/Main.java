@@ -3,11 +3,7 @@ package FinalProject;
 import java.util.List;
 
 public class Main {
-    //this my original code
-//    public static String wishListFile = "wishlist.txt";
-//    public static String visitedFile = "visited.txt";
-//    this is original code as well
-    static Storage storage = new Storage();
+
     // initialize objects for gui and db files
     VocationDB database;
     VocationGui gui;
@@ -19,12 +15,6 @@ public class Main {
 
     }
 
-    public static void quit(List<Place> wishList) {
-        //this is my original code
-//        storage.writeListToFile(wishList, wishListFile);
-
-
-    }
     private void creation(){
         //create vocationDB object
         database = new VocationDB();
@@ -38,13 +28,14 @@ public class Main {
 
     }
 
-     List<Place> getPlaceData(){
+     protected List<Place> getPlaceData(){
         return database.retrievePlaceInfo();
     }
 
     String addPlace(Place place){
         return  database.addNewPlace(place);
     }
+
     void deleteplace(Place place){
         database.deleteplaceFromDB(place);
     }

@@ -5,15 +5,15 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class VocationGui extends JFrame {
     private JPanel mainPanel;
     private JLabel titleText;
     private JList<Place> wishList;
-    private JLabel instructionTxt;
     private JTextField vocationPlaceTxtFiled;
     private JButton addButton;
-    private JLabel imagefield;
     private JPanel Jpanel1;
     private JTextField reasonTextField;
     private JButton DeleteButton;
@@ -43,6 +43,7 @@ public VocationGui(Main main) {
         addActionListeners();
 
 
+
 }
 
 
@@ -52,7 +53,18 @@ public void addActionListeners(){
         public void actionPerformed(ActionEvent e) {
             String name = vocationPlaceTxtFiled.getText();
             String reason = reasonTextField.getText();
-            // validate user input
+            //validate JtextField using REGEx
+            Pattern pattern = Pattern.compile("\\d+");
+            Matcher matcher = pattern.matcher(name);
+            Matcher mtch = pattern.matcher(reason);
+            // check all occurance
+            if (matcher.find() || mtch.find()){
+                errormsg("Please use letter only");
+                vocationPlaceTxtFiled.setText("");// clear name textfield
+                reasonTextField.setText("");// clear reasont textfiled
+                return;
+            }
+
             if(name.isEmpty() || reason.isEmpty()){
                 errormsg("enter a name and reason");
                 return;
@@ -64,6 +76,16 @@ public void addActionListeners(){
             if(outcome.equals(VocationDB.noDupicate)){
                 List<Place> alldata = main.getPlaceData();
                 updatewishList(alldata);
+                // clear both JTextfields after each entry
+                vocationPlaceTxtFiled.setText("");
+                reasonTextField.setText("");
+
+            }else{
+                errormsg(name + " is already in the list");
+                // clear both JTextFileds
+                vocationPlaceTxtFiled.setText("");
+                reasonTextField.setText("");
+
             }
 
         }
