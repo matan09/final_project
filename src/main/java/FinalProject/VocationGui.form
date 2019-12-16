@@ -32,7 +32,7 @@
         <properties/>
         <border type="none"/>
         <children>
-          <component id="ffcdf" class="javax.swing.JLabel" binding="titleText">
+          <component id="ffcdf" class="javax.swing.JLabel">
             <constraints>
               <grid row="0" column="0" row-span="1" col-span="3" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="12" use-parent-layout="false"/>
             </constraints>
@@ -41,7 +41,7 @@
               <text value="Welcome to Vocation Manager APP"/>
             </properties>
           </component>
-          <component id="4bb99" class="javax.swing.JLabel" binding="instructionTxt">
+          <component id="4bb99" class="javax.swing.JLabel">
             <constraints>
               <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
             </constraints>
@@ -80,7 +80,7 @@
               <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
             </constraints>
             <properties>
-              <text value="Enter you reason for visit"/>
+              <text value="Enter your reason for visit"/>
             </properties>
           </component>
         </children>

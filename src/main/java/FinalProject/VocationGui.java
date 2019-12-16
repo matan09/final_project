@@ -10,7 +10,6 @@ import java.util.regex.Pattern;
 
 public class VocationGui extends JFrame {
     private JPanel mainPanel;
-    private JLabel titleText;
     private JList<Place> wishList;
     private JTextField vocationPlaceTxtFiled;
     private JButton addButton;
